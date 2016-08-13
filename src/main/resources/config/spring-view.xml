@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--通用视图解析器-->
+    <!-- <bean id="viewResolverCommon" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="${jsp.prefix}"/>
+        <property name="suffix" value="${jsp.suffix}"/>
+        <property name="contentType" value="${freemarket.contentType}"/>
+        可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 
+        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+        <property name="order" value="${jsp.order}"/>
+    </bean> -->
+
+    <!-- 配置freeMarker视图解析器 -->
+    <!-- <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="${freemarket.contentType}"/>
+        <property name="cache" value="${freemarket.cache}"/>
+        <property name="suffix" value="${freemarket.suffix}"/>
+        <property name="order" value="${freemarket.order}"/>
+    </bean> -->
+
+    <!-- 配置freeMarker的模板路径 -->
+    <!-- <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="${freemarket.prefix}"/>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape"/>
+            </map>
+        </property>
+        <property name="defaultEncoding" value="${freemarker.default.encoding}"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">${freemarker.templateUpdateDelay}</prop>
+                <prop key="number_format">${freemarker.numberFormat}</prop>
+                <prop key="date_format">${freemarker.dateFormat}</prop>
+                <prop key="time_format">${freemarker.timeFormat}</prop>
+                <prop key="datetime_format">${freemarker.datetimeFormat}</prop>
+                <prop key="whitespace_stripping">${freemarker.whitespaceStripping}</prop>
+                <prop key="default_encoding">${freemarker.defaultEncoding}</prop>
+                <prop key="url_escaping_charset">${freemarker.urlEscapingCharset}</prop>
+                <prop key="locale">${freemarker.locale}</prop>
+                <prop key="auto_import">${freemarker.autoImport}</prop>
+            </props>
+        </property>
+    </bean> -->
+
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+
+</beans>

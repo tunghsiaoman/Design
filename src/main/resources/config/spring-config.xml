@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 自动扫瞄 -->
+    <context:component-scan base-package="com.design"/>
+    <!-- 加入Aspectj配置 -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- 拦截器 -->
+    <!-- <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*.shtml"/>
+            <bean class="com.bitch.interceptor.BitchInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors> -->
+
+    <!-- 默认的注解映射的支持 -->
+    <!--<mvc:annotation-driven/>-->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true"/>
+        <property name="favorParameter" value="false"/>
+        <property name="ignoreAcceptHeader" value="true"/>
+        <property name="mediaTypes">
+            <props>
+                <prop key="json">text/html;charset=UTF-8</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
+    <!--<property name="messageConverters">-->
+    <!--<list>-->
+    <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--<list>-->
+    <!--<value>text/html;charset=UTF-8</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>-->
+
+</beans>
