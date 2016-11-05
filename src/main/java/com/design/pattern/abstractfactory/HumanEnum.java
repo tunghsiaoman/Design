@@ -8,8 +8,8 @@ package com.design.pattern.abstractfactory;
 public enum HumanEnum {
 
 	// 把世界上所有的人种都定义出来
-	YellowMaleHuman("黄种男人"),
-	YellowWomanHuman("黄种女人"),
+	YellowMaleHuman("com.design.pattern.abstractfactory.YellowMaleHuman"),
+	YellowWomanHuman("com.design.pattern.abstractfactory.YellowFemaleHuman"),
 	WhiteMaleHuman("白种男人"),
 	WhiteWomanHuman("白种男人"),
 	BlackMaleHuman("黑种男人"),
