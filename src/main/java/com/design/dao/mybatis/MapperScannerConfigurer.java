@@ -215,7 +215,7 @@ public class MapperScannerConfigurer implements BeanDefinitionRegistryPostProces
      * {@inheritDoc}
      */
     public void afterPropertiesSet() throws Exception {
-        Assert.isNull(this.basePackage, "Property 'basePackage' is required");
+        Assert.notNull(this.basePackage, "Property 'basePackage' is required");
 
         AsyncMapperExecutor.init(corePoolSize, maxPoolSize, queueSize);
     }

@@ -45,7 +45,7 @@ public class MapperFactoryBean<T> extends SqlSessionDaoSupport implements Factor
     protected void checkDaoConfig() {
         super.checkDaoConfig();
 
-        Assert.isNull(this.mapperInterface, "Property 'mapperInterface' is required");
+        Assert.notNull(this.mapperInterface, "Property 'mapperInterface' is required");
 
         Configuration configuration = getSqlSession().getConfiguration();
         if (this.addToConfig && !configuration.hasMapper(this.mapperInterface)) {

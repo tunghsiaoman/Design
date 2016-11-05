@@ -87,10 +87,11 @@
 		<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
 	</bean>
 
+	<!-- 声明异步数据源 -->
 	<bean class="com.design.dao.mybatis.MapperScannerConfigurer">
 		<property name="basePackage" value="com.design.dao.mapper" />
 		<!--Optional，Default is 20 -->
-		<property name="initPoolSize" value="20"></property>
+		<property name="corePoolSize" value="20"></property>
 		<!--Optional，Default is 200 -->
 		<property name="maxPoolSize" value="200"></property>
 		<!--Optional，Default is 500 -->
