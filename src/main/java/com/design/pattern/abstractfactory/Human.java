@@ -6,4 +6,15 @@ package com.design.pattern.abstractfactory;
  */
 public interface Human {
 	
+	// 笑
+	void smile();
+	
+	// 哭
+	void cry();
+	
+	// 说
+	void talk();
+	
+	// 定义性别
+	void sex();
 }
