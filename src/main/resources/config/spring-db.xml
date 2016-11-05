@@ -55,6 +55,31 @@
 		<!-- <property name="filters" value="stat" /> -->
 		<property name="filters" value="mergeStat" />
 	</bean>
+	
+	<!-- 声明异步数据源 -->
+	<bean class="com.design.dao.mybatis.MapperScannerConfigurer">
+		<property name="basePackage" value="com.design.dao.mapper" />
+		<!--Optional，Default is 20 -->
+		<property name="corePoolSize" value="20"></property>
+		<!--Optional，Default is 200 -->
+		<property name="maxPoolSize" value="200"></property>
+		<!--Optional，Default is 500 -->
+		<property name="queueSize" value="500"></property>
+	</bean>
+	
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+	</bean>
 
 	<!-- 配置druid监控spring jdbc -->
 	<bean id="druid-stat-interceptor"
@@ -72,31 +97,5 @@
 		<aop:advisor advice-ref="druid-stat-interceptor"
 			pointcut-ref="druid-stat-pointcut" />
 	</aop:config>
-
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<!-- 声明式事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
-
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
-	</bean>
-
-	<!-- 声明异步数据源 -->
-	<bean class="com.design.dao.mybatis.MapperScannerConfigurer">
-		<property name="basePackage" value="com.design.dao.mapper" />
-		<!--Optional，Default is 20 -->
-		<property name="corePoolSize" value="20"></property>
-		<!--Optional，Default is 200 -->
-		<property name="maxPoolSize" value="200"></property>
-		<!--Optional，Default is 500 -->
-		<property name="queueSize" value="500"></property>
-	</bean>
-
 
 </beans>
