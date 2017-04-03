@@ -1,0 +1,26 @@
+package com.design.pattern.observer;
+
+/**
+ * 专题接口
+ * @author xiaoman.dong
+ * @date 2017-04-03
+ */
+public interface Subject {
+	
+	/**
+	 * 注册一个观察者
+	 * @param observer
+	 */
+	public void registerObserver(Observer observer);
+	
+	/**
+	 * 移除一个观察者
+	 * @param observer
+	 */
+	public void deleteObserver(Observer observer);
+	
+	/**
+	 * 通知所有观察者
+	 */
+	public void notifyObserver();
+}
